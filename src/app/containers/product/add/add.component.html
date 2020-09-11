@@ -1,0 +1,40 @@
+<form [formGroup]="addProductForm" class="login-container" (ngSubmit)="add()">
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="product">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="product"
+        placeholder="Name of the product"
+        formControlName="name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="rate">Rate</label>
+      <input
+        type="number"
+        class="form-control"
+        id="rate"
+        placeholder="Rate"
+        formControlName="rate"
+      />
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input
+        type="number"
+        class="form-control"
+        id="quantity"
+        placeholder="Quantity"
+        formControlName="quantity"
+      />
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click) ="clear()">
+      Cancel
+    </button>
+    <button type="submit" class="btn btn-primary" [disabled] = "!addProductForm.valid">Add</button>
+  </div>
+</form>

@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12">
+    <div class="card">
+      <div class="card-header">
+        Card with label
+        <div class="card-header-actions" data-toggle="modal" data-target="#exampleModalCenter">
+          <span class="badge badge-success cursor">Add Product</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products;">
+              <td>{{ product.id }}</td>
+              <td>{{ product.name }}</td>
+              <td>{{ product.rate }}</td>
+              <td>{{ product.quantity }}</td>
+              <td class="cursor" (click)="deleteProductConfirmation(product.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr *ngIf="products == null || products.length == 0">
+              <td colspan="100" align="center">
+                No Matches Found
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeModal>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <add-product (productData)="addProductInArray($event)"></add-product>
+
+    </div>
+  </div>
+</div>

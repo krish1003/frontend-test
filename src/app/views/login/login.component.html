@@ -1,0 +1,86 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="card-group">
+            <div class="card p-4">
+              <div class="card-body">
+                <form
+                  [formGroup]="loginForm"
+                  class="login-container"
+                  (ngSubmit)="login()"
+                >
+                  <h1>Login</h1>
+                  <p class="text-muted">Sign In to your account</p>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"
+                        ><i class="fa fa-user" aria-hidden="true"></i></span>
+                    </div>
+                    <input
+                      name="email"
+                      type="email"
+                      placeholder="Email"
+                      required
+                      class="form-control"
+                      formControlName="email"
+                      [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }"
+                      pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                    />
+                  </div>
+                  <div
+                    *ngIf="isSubmitted && formControls.email.errors"
+                    class="help-block"
+                  >
+                    <div *ngIf="formControls.email.errors.required" class="error">
+                      Email is required
+                    </div>
+                    <div *ngIf="formControls.email.errors.pattern" class="error">
+                      Email must be a valid email address
+                    </div>
+                  </div>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"
+                        ><i class="fa fa-lock"></i></span>
+                    </div>
+                    <input
+                      name="password"
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      formControlName="password"
+                      [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }"
+                      pattern="^(.*[A-Z].*)$"
+                    />
+                  </div>
+
+                  <div
+                    *ngIf="isSubmitted && formControls.password.errors"
+                    class="help-block"
+                  >
+                    <div *ngIf="formControls.password.errors.required" class="error">
+                      Password is required
+                    </div>
+                    <div *ngIf="formControls.password.errors.pattern" class="error">
+                      Password should contain one uppercase letter.
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <button class="btn btn-primary px-4" type="submit" [disabled]="loading">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Login
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
