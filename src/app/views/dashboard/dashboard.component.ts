@@ -71,7 +71,6 @@ export class DashboardComponent implements OnInit {
   addProductInArray(product: any) {
     Swal.fire('Product has been added successfully');
     this.get();
-    console.log(this.products);
     if (this.products === null){
       this.products = [];
     }
