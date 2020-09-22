@@ -39,17 +39,4 @@ export class AuthService {
       this.currentUserSubject.next(null);
       this.router.navigate(['/login']);
   }
-
-  // public login(userInfo: User){
-  //   localStorage.setItem('ACCESS_TOKEN', "demoaccesstoken");
-  // }
-
-  // public isLoggedIn(){
-  //   return localStorage.getItem('ACCESS_TOKEN') !== null;
-
-  // }
-
-  // public logout(){
-  //   localStorage.removeItem('ACCESS_TOKEN');
-  // }
 }
